@@ -9,7 +9,7 @@ val appModule = module {
 
     factory { LinearLayoutManager(get()) }
 
-    single { GridLayoutManager(get(), 2) }
+    factory { GridLayoutManager(get(), 2) }
 
-    single { DividerItemDecoration(get(), LinearLayoutManager.VERTICAL) }
+    factory { DividerItemDecoration(get(), LinearLayoutManager.VERTICAL) }
 }

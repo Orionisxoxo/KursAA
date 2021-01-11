@@ -1,0 +1,59 @@
+ext {
+
+    def appCompatVersion = "1.1.0"
+    def coreKtxVersion = "1.2.0"
+    def constraintLayoutVersion = "1.1.3"
+    def materialVersion = "1.1.0"
+    def recyclerViewVersion = "1.1.0"
+    def glideVersion = "4.11.0"
+    def navigationVersion = "2.2.2"
+    def koinVersion = "2.1.5"
+    def coroutinesVersion = "1.3.5"
+    def lifecycleKtxVersion = "2.2.0"
+    def liveEventVersion = "1.2.0"
+    def retrofitVersion = "2.8.1"
+    def okHttpVersion = "4.6.0"
+
+    coreDependencies = [
+            appCompat: "androidx.appcompat:appcompat:" + appCompatVersion,
+            coreKtx: "androidx.core:core-ktx:" + coreKtxVersion
+    ]
+
+    uiDependencies = [
+            constraintlayout: "androidx.constraintlayout:constraintlayout:" + constraintLayoutVersion,
+            material: "com.google.android.material:material:" + materialVersion,
+            recyclerview: "androidx.recyclerview:recyclerview:" + recyclerViewVersion,
+            glide: "com.github.bumptech.glide:glide:" + glideVersion
+    ]
+
+    navigationDependencies = [
+            navigationFragment: "androidx.navigation:navigation-fragment-ktx:" + navigationVersion,
+            navigationUiKtx: "androidx.navigation:navigation-ui-ktx:" + navigationVersion
+    ]
+
+    diDependencies = [
+            koin: "org.koin:koin-android:" + koinVersion,
+            viewModel: "org.koin:koin-androidx-viewmodel:" + koinVersion,
+            scope: "org.koin:koin-androidx-scope:" + koinVersion
+    ]
+
+    coroutinesDependencies = [
+            coroutinesCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:" + coroutinesVersion,
+            coroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:" + coroutinesVersion
+    ]
+
+    lifecycleDependencies = [
+            viewModelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:" + lifecycleKtxVersion,
+            liveDataKtx: "androidx.lifecycle:lifecycle-livedata-ktx:" + lifecycleKtxVersion,
+            runtimeKtx: "androidx.lifecycle:lifecycle-runtime-ktx:" + lifecycleKtxVersion,
+            commonJava: "androidx.lifecycle:lifecycle-common-java8:" + lifecycleKtxVersion,
+            liveEvent: "com.github.hadilq.liveevent:liveevent:" + liveEventVersion
+    ]
+
+    networkDependencies = [
+            retrofit: "com.squareup.retrofit2:retrofit:" + retrofitVersion,
+            conventerGson: "com.squareup.retrofit2:converter-gson:" + retrofitVersion,
+            okHttp: "com.squareup.okhttp3:okhttp:" + okHttpVersion,
+            loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:" + okHttpVersion
+    ]
+}
