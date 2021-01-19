@@ -1,7 +1,5 @@
 package com.example.kursaa.features.episode.presentation.model
 
-import com.example.kursaa.features.data.remote.model.CharacterLocationRemote
-import com.example.kursaa.features.data.remote.model.CharacterOriginRemote
 import com.example.kursaa.features.episode.domain.model.Character
 import com.example.kursaa.features.episode.domain.model.CharacterLocation
 import com.example.kursaa.features.episode.domain.model.CharacterOrigin
@@ -13,8 +11,8 @@ data class CharacterDisplayable(
     val species: String,
     val type: String,
     val gender: String,
-    val origin: CharacterOriginRemote,
-    val location: CharacterLocationRemote,
+    val origin: CharacterOriginDisplayable,
+    val location: CharacterLocationDisplayable,
     val image: String,
     val episode: List<String>,
     val url: String
@@ -26,8 +24,8 @@ data class CharacterDisplayable(
         species = character.species,
         type = character.type,
         gender = character.gender,
-        origin = character.origin,
-        location = character.location,
+        origin = CharacterOriginDisplayable(character.name, character.url),
+        location = CharacterLocationDisplayable(character.name, character.url),
         image = character.image,
         episode = character.episode,
         url = character.url
