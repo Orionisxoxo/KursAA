@@ -1,6 +1,6 @@
-package com.example.kursaa.features.episode.presentation.model
+package com.example.kursaa.features.location.presentation.model
 
-import com.example.kursaa.features.episode.domain.model.Location
+import com.example.kursaa.features.location.domain.model.Location
 
 data class LocationDisplayable(
     val id: Int,

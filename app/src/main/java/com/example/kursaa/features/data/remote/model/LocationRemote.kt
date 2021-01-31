@@ -1,6 +1,6 @@
 package com.example.kursaa.features.data.remote.model
 
-import com.example.kursaa.features.episode.domain.model.Location
+import com.example.kursaa.features.location.domain.model.Location
 import com.google.gson.annotations.SerializedName
 
 data class LocationRemote(

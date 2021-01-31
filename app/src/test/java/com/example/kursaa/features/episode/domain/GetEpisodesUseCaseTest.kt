@@ -9,7 +9,7 @@ import org.junit.Test
 internal class GetEpisodesUseCaseTest {
 
     @Test
-    fun `when use case is inviked then execute getEpisodes method from repository`() {
+    fun `when use case is invoked then execute getEpisodes method from repository`() {
         //given
         val repository = mockk<EpisodeRepository>(relaxed = true)
         val useCase = GetEpisodesUseCase(repository)
