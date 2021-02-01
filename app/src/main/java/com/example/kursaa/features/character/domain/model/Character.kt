@@ -1,4 +1,4 @@
-package com.example.kursaa.features.episode.domain.model
+package com.example.kursaa.features.character.domain.model
 
 import com.example.kursaa.features.data.remote.model.CharacterLocationRemote
 import com.example.kursaa.features.data.remote.model.CharacterOriginRemote

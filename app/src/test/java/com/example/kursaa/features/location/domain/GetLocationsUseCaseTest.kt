@@ -1,6 +1,5 @@
 package com.example.kursaa.features.location.domain
 
-import com.example.kursaa.features.location.LocationRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.GlobalScope

@@ -1,6 +1,6 @@
 package com.example.kursaa.features.data.remote.model
 
-import com.example.kursaa.features.episode.domain.model.Character
+import com.example.kursaa.features.character.domain.model.Character
 import com.google.gson.annotations.SerializedName
 
 data class CharacterRemote(

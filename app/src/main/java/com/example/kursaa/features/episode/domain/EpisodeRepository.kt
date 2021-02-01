@@ -1,4 +1,4 @@
-package com.example.kursaa.features.episode
+package com.example.kursaa.features.episode.domain
 
 import com.example.kursaa.features.episode.domain.model.Episode
 

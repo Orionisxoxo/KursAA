@@ -1,6 +1,5 @@
 package com.example.kursaa.features.episode.domain
 
-import com.example.kursaa.features.episode.EpisodeRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.GlobalScope
