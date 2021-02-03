@@ -1,4 +1,4 @@
-package com.example.kursaa.features.episode.domain.model
+package com.example.kursaa.features.location.domain.model
 
 data class Location(
     val id: Int,

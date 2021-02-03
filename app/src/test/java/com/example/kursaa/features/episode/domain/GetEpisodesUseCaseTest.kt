@@ -1,6 +1,5 @@
 package com.example.kursaa.features.episode.domain
 
-import com.example.kursaa.features.episode.EpisodeRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.GlobalScope
@@ -9,7 +8,7 @@ import org.junit.Test
 internal class GetEpisodesUseCaseTest {
 
     @Test
-    fun `when use case is inviked then execute getEpisodes method from repository`() {
+    fun `when use case is invoked then execute getEpisodes method from repository`() {
         //given
         val repository = mockk<EpisodeRepository>(relaxed = true)
         val useCase = GetEpisodesUseCase(repository)

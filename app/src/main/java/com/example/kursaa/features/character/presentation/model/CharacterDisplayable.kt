@@ -1,8 +1,8 @@
 package com.example.kursaa.features.episode.presentation.model
 
-import com.example.kursaa.features.episode.domain.model.Character
-import com.example.kursaa.features.episode.domain.model.CharacterLocation
-import com.example.kursaa.features.episode.domain.model.CharacterOrigin
+import com.example.kursaa.features.character.domain.model.Character
+import com.example.kursaa.features.character.domain.model.CharacterLocation
+import com.example.kursaa.features.character.domain.model.CharacterOrigin
 
 data class CharacterDisplayable(
     val id: Int,
