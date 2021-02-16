@@ -7,8 +7,8 @@ import com.example.kursaa.features.characters.domain.model.CharacterOrigin
 @Entity
 data class CharacterOriginCached(
     @PrimaryKey
-    val name: String,
-    val url: String
+    val characterOriginName: String,
+    val characterOriginUrl: String
 ) {
     constructor(characterOrigin: CharacterOrigin) : this(
         characterOrigin.name,
@@ -18,7 +18,7 @@ data class CharacterOriginCached(
     companion object
 
     fun toCharacterOrigin() = CharacterOrigin(
-        name = name,
-        url = url
+        name = characterOriginName,
+        url = characterOriginUrl
     )
 }

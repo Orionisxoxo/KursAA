@@ -1,5 +1,6 @@
 package com.example.kursaa.features.characters.data.local.model
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.kursaa.features.characters.domain.model.Character
@@ -13,7 +14,9 @@ data class CharacterCached(
     val species: String,
     val type: String,
     val gender: String,
+    @Embedded(prefix = "characterOriginCached")
     val characterOriginCached: CharacterOriginCached,
+    @Embedded(prefix = "characterLocationCached")
     val characterLocationCached: CharacterLocationCached,
     val image: String,
     val episode: List<String>,

@@ -7,8 +7,8 @@ import com.example.kursaa.features.characters.domain.model.CharacterLocation
 @Entity
 data class CharacterLocationCached(
     @PrimaryKey
-    val name: String,
-    val url: String
+    val locationName: String,
+    val locationUrl: String
 ) {
     constructor(characterLocation: CharacterLocation) : this(
         characterLocation.name,
@@ -18,7 +18,7 @@ data class CharacterLocationCached(
     companion object
 
     fun toCharacterLocation() = CharacterLocation(
-        name = name,
-        url = url
+        name = locationName,
+        url = locationUrl
     )
 }

@@ -93,8 +93,8 @@ fun CharacterCached.Companion.mock() = CharacterCached(
     species = "character species",
     type = "character type",
     gender = "character gender",
-    characterOriginRemote = CharacterOriginCached.mock(),
-    characterLocationRemote = CharacterLocationCached.mock(),
+    characterOriginCached = CharacterOriginCached.mock(),
+    characterLocationCached = CharacterLocationCached.mock(),
     image = "character image",
     episode = emptyList<String>(),
     url = "character url"
@@ -102,14 +102,14 @@ fun CharacterCached.Companion.mock() = CharacterCached(
 
 @TestOnly
 fun CharacterOriginCached.Companion.mock() = CharacterOriginCached(
-    name = "character name",
-    url = "character url"
+    characterOriginName = "character name",
+    characterOriginUrl = "character url"
 )
 
 @TestOnly
 fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
-    name = "character name",
-    url = "character url"
+    locationName = "character name",
+    locationUrl = "character url"
 )
 
 @TestOnly
