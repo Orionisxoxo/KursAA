@@ -2,6 +2,7 @@ package com.example.kursaa.features.episodes.data.repository
 
 import com.example.kursaa.core.api.RickAndMortyApi
 import com.example.kursaa.core.api.model.EpisodesResponse
+import com.example.kursaa.core.exception.ErrorWrapper
 import com.example.kursaa.core.network.NetworkStateProvider
 import com.example.kursaa.features.episodes.data.local.EpisodeDao
 import com.example.kursaa.features.episodes.data.local.model.EpisodeCached
@@ -27,8 +28,9 @@ internal class EpisodeRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -48,8 +50,9 @@ internal class EpisodeRepositoryImplTest {
             every { isNetworkAvailable() } returns true
         }
 
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }
@@ -68,9 +71,9 @@ internal class EpisodeRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: EpisodeRepository =
-            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider)
+            EpisodeRepositoryImpl(api, episodeDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getEpisodes() }

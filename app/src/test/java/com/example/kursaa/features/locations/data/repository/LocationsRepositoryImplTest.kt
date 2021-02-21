@@ -2,6 +2,7 @@ package com.example.kursaa.features.locations.data.repository
 
 import com.example.kursaa.core.api.RickAndMortyApi
 import com.example.kursaa.core.api.model.LocationsResponse
+import com.example.kursaa.core.exception.ErrorWrapper
 import com.example.kursaa.core.network.NetworkStateProvider
 import com.example.kursaa.features.locations.data.local.LocationDao
 import com.example.kursaa.features.locations.data.local.model.LocationCached
@@ -26,9 +27,9 @@ internal class LocationsRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationsRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationsRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -47,9 +48,9 @@ internal class LocationsRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationsRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationsRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -68,9 +69,9 @@ internal class LocationsRepositoryImplTest {
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns false
         }
-
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val repository: LocationRepository =
-            LocationsRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationsRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
