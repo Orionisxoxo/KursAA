@@ -11,13 +11,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode) {
 
     private val linearLayoutManager: LinearLayoutManager by lifecycleScope.inject()
-    private val adapter: EpisodeRecyclerViewAdapter by lifecycleScope.inject()
+    private val episodeAdapter: EpisodeRecyclerViewAdapter by lifecycleScope.inject()
     override val viewModel: EpisodeViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()
         initRecyclerView()
-        setEpisodeList()
         //initialize all view-related classes
     }
 
@@ -36,17 +35,13 @@ class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode
         //handle pending state here
     }
 
-    private fun observeEpisodes() {
-        viewModel.episodes.observe(this) {
-            //code to display episodes
-        }
-    }
-
     private fun initRecyclerView() {
         episodesRecyclerView.layoutManager = linearLayoutManager
     }
 
-    private fun setEpisodeList() {
-        //use adapter to set items on recyclerView
+    private fun observeEpisodes() {
+        viewModel.episodes.observe(this) {
+            episodeAdapter.setEpisodes(it)
+        }
     }
 }

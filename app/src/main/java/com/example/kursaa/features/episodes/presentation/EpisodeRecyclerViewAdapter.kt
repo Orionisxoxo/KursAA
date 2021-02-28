@@ -6,40 +6,38 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kursaa.R
-import com.example.kursaa.core.api.model.EpisodesResponse
+import com.example.kursaa.features.episodes.presentation.model.EpisodeDisplayable
 
-class EpisodeRecyclerViewAdapter(private val dataSet: Array<EpisodesResponse>) :
-    RecyclerView.Adapter<EpisodeRecyclerViewAdapter.ViewHolder>() {
+class EpisodeRecyclerViewAdapter : RecyclerView.Adapter<EpisodeRecyclerViewAdapter.EpisodeViewHolder>() {
 
-    /**
-     * Provide a reference to the type of views that you are using
-     * (custom ViewHolder).
-     */
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.item_text)
+    private val episodes by lazy { mutableListOf<EpisodeDisplayable>() }
 
-        init {
-            // Define click listener for the ViewHolder's View.
+    fun setEpisodes(episodes: List<EpisodeDisplayable>) {
+        if (episodes.isNotEmpty()) {
+            this.episodes.clear()
         }
+
+        this.episodes.addAll(episodes)
+        notifyDataSetChanged()
     }
 
-    // Create new views (invoked by the layout manager)
-    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        // Create a new view, which defines the UI of the list item
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_list, viewGroup, false)
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): EpisodeViewHolder {
+        val itemView = LayoutInflater
+            .from(viewGroup.context)
+            .inflate(R.layout.episode_item, viewGroup, false)
 
-        return ViewHolder(view)
+        return EpisodeViewHolder(itemView)
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
-    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
-        // Get element from your dataset at this position and replace the
-        // contents of the view with that element
-        viewHolder.textView.text = dataSet[position].toString()
+    override fun onBindViewHolder(episodeViewHolder: EpisodeViewHolder, position: Int) {
+        episodeViewHolder.nameText.text = episodes[position].toString()
+        episodeViewHolder.airDateText.text = episodes[position].toString()
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = dataSet.size
+    override fun getItemCount() = episodes.size
+
+    class EpisodeViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        var nameText: TextView = view.findViewById(R.id.name) as TextView
+        var airDateText: TextView = view.findViewById(R.id.airDate) as TextView
+    }
 }
