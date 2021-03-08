@@ -4,8 +4,13 @@ import com.example.kursaa.core.api.model.*
 import com.example.kursaa.features.characters.data.local.model.CharacterCached
 import com.example.kursaa.features.characters.data.local.model.CharacterLocationCached
 import com.example.kursaa.features.characters.data.local.model.CharacterOriginCached
+import com.example.kursaa.features.characters.domain.model.Character
+import com.example.kursaa.features.characters.domain.model.CharacterLocation
+import com.example.kursaa.features.characters.domain.model.CharacterOrigin
 import com.example.kursaa.features.episodes.data.local.model.EpisodeCached
+import com.example.kursaa.features.episodes.domain.model.Episode
 import com.example.kursaa.features.locations.data.local.model.LocationCached
+import com.example.kursaa.features.locations.domain.model.Location
 import org.jetbrains.annotations.TestOnly
 
 @TestOnly
@@ -39,6 +44,16 @@ fun EpisodesResponse.Companion.mock() = EpisodesResponse(
 
 @TestOnly
 fun EpisodeCached.Companion.mock() = EpisodeCached(
+    id = 1,
+    name = "episode name",
+    airDate = "episode air date",
+    code = "episode code",
+    characters = emptyList(),
+    url = "episode url"
+)
+
+@TestOnly
+fun Episode.Companion.mock() = Episode(
     id = 1,
     name = "episode name",
     airDate = "episode air date",
@@ -113,6 +128,33 @@ fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
 )
 
 @TestOnly
+fun Character.Companion.mock() = Character(
+    id = 1,
+    name = "character name",
+    status = "character status",
+    species = "character species",
+    type = "character type",
+    gender = "character gender",
+    origin = CharacterOrigin.mock(),
+    location = CharacterLocation.mock(),
+    image = "character image",
+    episode = emptyList<String>(),
+    url = "character url"
+)
+
+@TestOnly
+fun CharacterOrigin.Companion.mock() = CharacterOrigin(
+    name = "character name",
+    url = "character url"
+)
+
+@TestOnly
+fun CharacterLocation.Companion.mock() = CharacterLocation(
+    name = "character name",
+    url = "character url"
+)
+
+@TestOnly
 fun LocationRemote.Companion.mock() = LocationRemote(
     id = 1,
     name = "location name",
@@ -135,6 +177,16 @@ fun LocationsResponse.Companion.mock() = LocationsResponse(
 
 @TestOnly
 fun LocationCached.Companion.mock() = LocationCached(
+    id = 1,
+    name = "location name",
+    type = "location type",
+    dimension = "location dimension",
+    residents = emptyList(),
+    url = "episode url"
+)
+
+@TestOnly
+fun Location.Companion.mock() = Location(
     id = 1,
     name = "location name",
     type = "location type",
