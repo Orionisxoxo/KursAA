@@ -1,6 +1,8 @@
 package com.example.kursaa.features.characters.data.repository
 
 import com.example.kursaa.core.api.RickAndMortyApi
+import com.example.kursaa.core.exception.ErrorWrapper
+import com.example.kursaa.core.exception.callOrThrow
 import com.example.kursaa.core.network.NetworkStateProvider
 import com.example.kursaa.features.characters.data.local.CharacterDao
 import com.example.kursaa.features.characters.data.local.model.CharacterCached
@@ -10,12 +12,13 @@ import com.example.kursaa.features.characters.domain.model.Character
 class CharacterRepositoryImpl(
     private val rickAndMortyApi: RickAndMortyApi,
     private val characterDao: CharacterDao,
-    private val networkStateProvider: NetworkStateProvider
+    private val networkStateProvider: NetworkStateProvider,
+    private val errorWrapper: ErrorWrapper
 ) : CharacterRepository {
 
     override suspend fun getCharacters(): List<Character> {
         return if (networkStateProvider.isNetworkAvailable()) {
-            getCharactersFromRemote()
+            callOrThrow(errorWrapper) { getCharactersFromRemote() }
                 .also { saveCharactersToLocal(it) }
         } else {
             getCharactersFromLocal()

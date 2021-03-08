@@ -5,11 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.kursaa.core.base.BaseViewModel
+import com.example.kursaa.core.exception.ErrorMapper
 import com.example.kursaa.features.locations.domain.GetLocationsUseCase
 import com.example.kursaa.features.locations.domain.model.Location
 import com.example.kursaa.features.locations.presentation.model.LocationDisplayable
 
-class LocationViewModel(private val getLocationsUseCase: GetLocationsUseCase) : BaseViewModel() {
+class LocationViewModel(
+    private val getLocationsUseCase: GetLocationsUseCase,
+    errorMapper: ErrorMapper
+) : BaseViewModel(errorMapper) {
 
     private val _locations by lazy {
         MutableLiveData<List<Location>>()
